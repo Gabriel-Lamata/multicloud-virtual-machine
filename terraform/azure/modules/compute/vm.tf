@@ -1,9 +1,13 @@
+resource "random_id" "unique_id" {
+  byte_length = 8  # Garante um ID único de 8 bytes
+}
+
 resource "azurerm_public_ip" "public-ip" {
   name                = "vm-public-ip"
   location            = var.location
   resource_group_name = var.rg_name
   allocation_method   = "Static"
-  domain_name_label   = var.fqdn
+  domain_name_label   = "${var.fqdn}-${random_id.unique_id.hex}"  # Garante um sufixo único
 }
 
 resource "azurerm_network_security_group" "nsg" {
