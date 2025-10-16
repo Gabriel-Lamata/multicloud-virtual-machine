@@ -8,7 +8,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "vmtfkb001"
+    bucket         = "aws-vm-tfstate-gabriellamata"
     key            = "terraform.tfstate"
     region         = "us-east-1"
     use_lockfile   = true
